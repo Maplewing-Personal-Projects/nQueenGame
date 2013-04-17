@@ -1,9 +1,9 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace nQueenGame.Manager
+namespace nQueenGame.Scene
 {
-    public class SceneManager
+    public class Scene
     {
     }
 }
