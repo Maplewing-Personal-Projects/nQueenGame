@@ -131,14 +131,15 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Component\Component.cs" />
-    <Compile Include="Component\DrawableComponent.cs" />
     <Compile Include="GamePage.xaml.cs">
       <DependentUpon>GamePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainGame.cs" />
     <Compile Include="Manager\SceneManager.cs" />
+    <Compile Include="Manager\StateManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Scene\Scene.cs" />
+    <Compile Include="State\State.cs" />
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">

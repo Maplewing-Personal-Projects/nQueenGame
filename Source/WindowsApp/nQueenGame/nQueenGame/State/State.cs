@@ -4,7 +4,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace nQueenGame.State
 {
-    public class State
+    public class DrawState
     {
         #region Variable
 
@@ -48,7 +48,7 @@ namespace nQueenGame.State
 
         #region Constructor
 
-        public State(Game game, Vector4 bounds, Color color,
+        public DrawState(Game game, Vector4 bounds, Color color,
             Single rotateAngle = 0, SpriteEffects spriteEffects = SpriteEffects.None,
             Single depth = 0)
         {

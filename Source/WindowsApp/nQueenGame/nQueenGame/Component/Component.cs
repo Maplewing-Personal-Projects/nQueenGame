@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using nQueenGame.State;
 
 namespace nQueenGame.Component
 {
@@ -10,7 +11,8 @@ namespace nQueenGame.Component
 
         public int DrawOrder { get; set; }
         public bool Visible { get; set; }
-        
+        public DrawState State { get; set; }
+
         #endregion
 
         #region Constructor
