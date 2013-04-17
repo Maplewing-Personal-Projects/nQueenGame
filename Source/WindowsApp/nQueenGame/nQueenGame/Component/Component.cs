@@ -1,41 +1,36 @@
-﻿using System;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using nQueenGame.State;
 
 namespace nQueenGame.Component
 {
-    public class Component : GameComponent, IDrawable
+    public class BasicComponent : DrawableGameComponent
     {
-        #region Property
+        #region Variable
 
-        public int DrawOrder { get; set; }
-        public bool Visible { get; set; }
-        public DrawState State { get; set; }
+        public Viewport Bounds;
 
         #endregion
 
         #region Constructor
-        
-        public Component(Game game)
+
+        public BasicComponent(Game game)
             : base(game)
         {
+            Bounds = game.GraphicsDevice.Viewport;
         }
 
-        #endregion
-
-        #region Methods
-
-        public virtual void Draw(GameTime gameTime)
+        public virtual void Start()
         {
+            Game.Components.Add(this);
         }
-        
-        #endregion
 
-        #region Event
-
-        public event EventHandler<EventArgs> DrawOrderChanged;
-        public event EventHandler<EventArgs> VisibleChanged;
+        public virtual void End()
+        {
+            if (Game.Components.Contains(this))
+            {
+                Game.Components.Remove(this);
+            }
+        }
 
         #endregion
     }

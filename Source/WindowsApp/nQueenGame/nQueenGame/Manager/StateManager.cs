@@ -2,18 +2,19 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
+using nQueenGame.Component;
 using nQueenGame.State;
 
 namespace nQueenGame.Manager
 {
-    public class StateManager : GameComponent
+    public class StateManager : BasicComponent
     {
         #region Variable
         
         public const int FPS = 60;
 
-        private Queue<float> _stateChangeSecondQueue;
-        private Queue<DrawState> _stateQueue;
+        private Queue<float> _stateChangeSecondQueue = new Queue<float>();
+        private Queue<DrawState> _stateQueue = new Queue<DrawState>();
         private DrawState _goalState;
         private int _addframe;
         private Vector2 _addPosition;
