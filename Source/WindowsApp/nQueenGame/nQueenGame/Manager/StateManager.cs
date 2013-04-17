@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using System.Collections.Generic;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 using nQueenGame.State;
@@ -11,6 +12,8 @@ namespace nQueenGame.Manager
         
         public const int FPS = 60;
 
+        private Queue<float> _stateChangeSecondQueue;
+        private Queue<DrawState> _stateQueue;
         private DrawState _goalState;
         private int _addframe;
         private Vector2 _addPosition;
@@ -48,9 +51,14 @@ namespace nQueenGame.Manager
                 --_addframe;
                 if (_addframe <= 0) CurrentState = _goalState;
             }
+            else if (_stateQueue.Count > 0)
+            {
+                _goalState = _stateQueue.Dequeue();
+                SetNextState(_stateChangeSecondQueue.Dequeue(), _goalState);
+            }
         }
 
-        public void SetNextState( float second, DrawState state ){
+        private void SetNextState( float second, DrawState state ){
             _addPosition = new Vector2(((state.Position.X - CurrentState.Position.X) / second / FPS),
                 ((state.Position.Y - CurrentState.Position.Y) / second / FPS));
             _addSize = new Vector2(((state.Size.X - CurrentState.Size.X) / second / FPS),
@@ -61,6 +69,12 @@ namespace nQueenGame.Manager
                 ((color.Z - currentColor.Z) / second / FPS));
             _addframe = (int)(second * (float)FPS) + 1;
             _goalState = state;
+        }
+
+        public void AddState(float second, DrawState state)
+        {
+            _stateChangeSecondQueue.Enqueue(second);
+            _stateQueue.Enqueue(state);
         }
 
         #endregion
